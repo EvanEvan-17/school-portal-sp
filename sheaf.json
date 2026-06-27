@@ -1,0 +1,83 @@
+{
+    "project_hash": "ea25e18e-d3ed-4266-af7a-3e227376313c",
+    "components": {
+        "button": {
+            "installationTime": 1780290755
+        },
+        "icon": {
+            "installationTime": 1780290757
+        },
+        "date-picker": {
+            "installationTime": 1782451010
+        },
+        "input": {
+            "installationTime": 1780290785
+        },
+        "calendar": {
+            "installationTime": 1782397588
+        },
+        "layout": {
+            "installationTime": 1780309136
+        },
+        "sidebar": {
+            "installationTime": 1780309187
+        },
+        "navlist": {
+            "installationTime": 1780309190
+        },
+        "badge": {
+            "installationTime": 1780309218
+        },
+        "brand": {
+            "installationTime": 1780310187
+        },
+        "theme-switcher": {
+            "installationTime": 1780310561
+        },
+        "dropdown": {
+            "installationTime": 1780310572
+        },
+        "toast": {
+            "installationTime": 1780401678
+        },
+        "modal": {
+            "installationTime": 1780551880
+        },
+        "error": {
+            "installationTime": 1780553549
+        },
+        "checkbox": {
+            "installationTime": 1780553564
+        },
+        "field": {
+            "installationTime": 1780553585
+        },
+        "label": {
+            "installationTime": 1780553606
+        },
+        "separator": {
+            "installationTime": 1780553819
+        },
+        "heading": {
+            "installationTime": 1780553849
+        },
+        "text": {
+            "installationTime": 1782450388
+        },
+        "time-picker": {
+            "installationTime": 1782394727
+        },
+        "select": {
+            "installationTime": 1782450385
+        },
+        "popup": {
+            "installationTime": 1782450385
+        },
+        "card": {
+            "installationTime": 1782482948
+        },
+        "table": {
+            "installationTime": 1782576528
+        }
+    }
+}
