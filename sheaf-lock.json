@@ -75,6 +75,25 @@
         ],
         "resources/js/components/select.js": [
             "select"
+        ],
+        "Livewire/Concerns/WithPagination.php": [
+            "pagination",
+            "table"
+        ],
+        "Livewire/Concerns/CanExportCsv.php": [
+            "table"
+        ],
+        "Livewire/Concerns/WithSelection.php": [
+            "table"
+        ],
+        "Livewire/Concerns/WithReordering.php": [
+            "table"
+        ],
+        "Livewire/Concerns/WithSearch.php": [
+            "table"
+        ],
+        "Livewire/Concerns/WithSorting.php": [
+            "table"
         ]
     },
     "helpers": {
@@ -93,7 +112,9 @@
             "dropdown",
             "error",
             "time-picker",
-            "select"
+            "select",
+            "pagination",
+            "table"
         ],
         "input": [
             "date-picker",
@@ -103,7 +124,9 @@
             "badge",
             "navlist",
             "sidebar",
-            "theme-switcher"
+            "theme-switcher",
+            "pagination",
+            "table"
         ],
         "badge": [
             "navlist"
@@ -112,10 +135,17 @@
             "sidebar"
         ],
         "dropdown": [
-            "theme-switcher"
+            "theme-switcher",
+            "table"
         ],
         "text": [
             "select"
+        ],
+        "select": [
+            "pagination"
+        ],
+        "pagination": [
+            "table"
         ]
     }
 }

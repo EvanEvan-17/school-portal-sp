@@ -78,6 +78,9 @@
         },
         "table": {
             "installationTime": 1782576528
+        },
+        "pagination": {
+            "installationTime": 1782576560
         }
     }
 }
