@@ -81,6 +81,9 @@
         },
         "pagination": {
             "installationTime": 1782576560
+        },
+        "tabs": {
+            "installationTime": 1782629259
         }
     }
 }

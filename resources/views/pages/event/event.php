@@ -11,14 +11,17 @@ use App\Models\Event;
 new class extends Component
 {
     // public StudentClass $class;
+    public Collection $selectedEvents;
     public Collection $events;
-    public Collection $allEvents;
     public ?string $selectedDate = null;
     public $listeners = ['modal-closed' => 'onModalClosed'];
     public function mount()
     {
         // $this->class = $class;
-        $this->events = collect();
+        $this->selectedEvents = collect();
+        $this->events = Event::query()
+            ->orderBy('start_time')
+            ->get();
     }
     public function onModalClosed(string $id = '')
     {
@@ -46,7 +49,7 @@ new class extends Component
             $dayStart = $carbonDate->copy()->startOfDay();
             $dayEnd = $carbonDate->copy()->endOfDay();
             
-            $this->events = Event::query()
+            $this->selectedEvents = Event::query()
             ->where('start_time', '<=', $dayEnd)
             ->where('end_time', '>=', $dayStart)
             ->orderBy('start_time')
