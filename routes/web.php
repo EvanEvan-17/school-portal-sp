@@ -10,7 +10,7 @@ Route::middleware('guest')->group(function()
 });
 Route::middleware('auth')->group(function()
 {
-    Route::livewire('/events', 'pages::event')->middleware(['can:add-event'])->name('events');
+    Route::livewire('/events', 'pages::event')->name('events');
     Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
     // Route::livewire('/ai-assistant', 'pages::ai-assistant')->name('ai-assistant');
 });

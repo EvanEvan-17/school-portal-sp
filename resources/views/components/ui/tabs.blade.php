@@ -139,7 +139,7 @@ $classes = match($variant){
             }
         }
     }"
-    wire:ignore
+    {{-- wire:ignore --}}
 >
     {{ $slot }}
 </div>

@@ -12,18 +12,14 @@
         <x-ui.tab.panel name="calendar-mode">
             {{-- calendar mode --}}
             <div
-                {{-- class="**:data-[special~=containevent]:text-yellow-600 " --}}
+                class="**:data-[special~=containevent]:text-yellow-600 "
                 wire:loading.class="pointer-events-none opacity-50"
                 wire:target="selectedDate"
             >
                 <x-ui.calendar
                     mode="single"
                     wire:model.live="selectedDate"
-                    {{-- :special-days="[
-                        'containevent'   => ['2026-04-20', '2026-04-21'],
-                        'birthday'  => ['2026-04-15'],
-                        'blocked'   => ['2026-04-25', '2026-04-27'],
-                    ]" --}}
+                    :special-days="$this->specialDays"
                 />
             </div>
             <x-ui.modal 
@@ -39,7 +35,7 @@
                             <li class="list-disc list-inside mt-2">{{ $event->title . ', '. __(':start until :end', ['start' => $event->start_time->format('F j, Y g:i A'), 'end' => $event->end_time->format('F j, Y g:i A')]) }}</li>
                         @endforeach
                     </ul> --}}
-                        @foreach($selectedEvents as $event)
+                        @foreach($selectedEvents as $selectedEvent)
                             {{-- <div class="border rounded-lg p-4">
                                 <h3 class="font-bold">{{ $event->title }}</h3>
                                 <p class="text-sm text-gray-600">{{ $event->description }}</p>
@@ -49,17 +45,16 @@
                             </div> --}}
                             <x-ui.card size="sm" class="p-4 mt-4">
                                 <x-ui.heading class="flex items-center justify-between mb-4" level="h3" size="sm">
-                                    <span>{{ $event->title }}</span>
+                                    <span>{{ $selectedEvent->title }}</span>
                                 </x-ui.heading>
-                                <p>{{ $event->description }}</p>
-                                {{ $event->start_time->format('F j, Y g:i A') }} - {{ $event->end_time->format('F j, Y g:i A') }}
+                                <p>{{ $selectedEvent->description }}</p>
+                                {{ $selectedEvent->start_time->format('F j, Y g:i A') }} - {{ $selectedEvent->end_time->format('F j, Y g:i A') }}
                             </x-ui.card>
                         @endforeach
                 @endif
             </x-ui.modal>
         </x-ui.tab.panel>
         <x-ui.tab.panel name="table-mode">
-            {{-- table mode --}}
             <x-ui.table>
                 <x-ui.table.header>
                     <x-ui.table.columns>
@@ -67,6 +62,9 @@
                         <x-ui.table.head>{{ __('Details') }}</x-ui.table.head>
                         <x-ui.table.head>{{ __('Start') }}</x-ui.table.head>
                         <x-ui.table.head>{{ __('End') }}</x-ui.table.head>
+                        @can('delete-event')
+                            <x-ui.table.head>{{ __('Actions') }}</x-ui.table.head>
+                        @endcan
                     </x-ui.table.columns>
                 </x-ui.table.header>
 
@@ -99,6 +97,16 @@
                                     {{ $event->end_time->format('F j, Y g:i A') }}
                                 </div>
                             </x-ui.table.cell>
+
+                            @can('delete-event')
+                                <x-ui.table.cell>
+                                    <div class="flex gap-2">
+                                        <x-ui.button size="sm" color="red" wire:click="delete({{ $event->id }})">
+                                            {{ __('Delete') }}
+                                        </x-ui.button>
+                                    </div>
+                                </x-ui.table.cell>
+                            @endcan
                             
                         </x-ui.table.row>
                     @empty

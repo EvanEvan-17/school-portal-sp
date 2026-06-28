@@ -15,13 +15,12 @@ new class extends Component
     public Collection $events;
     public ?string $selectedDate = null;
     public $listeners = ['modal-closed' => 'onModalClosed'];
+    // special days
     public function mount()
     {
         // $this->class = $class;
         $this->selectedEvents = collect();
-        $this->events = Event::query()
-            ->orderBy('start_time')
-            ->get();
+        $this->loadEvents();
     }
     public function onModalClosed(string $id = '')
     {
@@ -29,6 +28,21 @@ new class extends Component
         {
             $this->selectedDate = null;
         }
+    }
+    public function loadEvents()
+    {
+        $this->events = Event::query()
+            ->orderBy('start_time')
+            ->get();
+    }
+    public function getSpecialDaysProperty()
+    {
+        return [
+            'containevent' => $this->events
+                ->pluck('start_time')
+                ->map(fn ($date) => \Carbon\Carbon::parse($date)->format('Y-m-d'))
+                ->toArray(),
+        ];
     }
     public function loadEventsForDate(?string $date = null)
     {
@@ -49,11 +63,11 @@ new class extends Component
             $dayStart = $carbonDate->copy()->startOfDay();
             $dayEnd = $carbonDate->copy()->endOfDay();
             
-            $this->selectedEvents = Event::query()
-            ->where('start_time', '<=', $dayEnd)
+            $this->selectedEvents = Event::where('start_time', '<=', $dayEnd)
             ->where('end_time', '>=', $dayStart)
             ->orderBy('start_time')
             ->get();
+            
         }
     }
     // on change
@@ -78,10 +92,7 @@ new class extends Component
     {
         $this->authorize('delete-event');
         $event->delete();
-        if(!empty($this->selectedDate))
-        {
-            $this->loadEventsForDate($this->selectedDate);
-        }
+        $this->loadEvents();
         $this->dispatch('notify', 
             type: 'success',
             content: __('Event deleted successfully!'),
