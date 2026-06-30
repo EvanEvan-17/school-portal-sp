@@ -21,5 +21,5 @@ $app = Application::configure(basePath: dirname(__DIR__))
     })->create();
 
 // hosting
-$app->usePublicPath('../spt.evantimothy.com');
+// $app->usePublicPath('../spt.evantimothy.com');
 return $app;
