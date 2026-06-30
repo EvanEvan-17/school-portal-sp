@@ -24,13 +24,17 @@
         <x-ui.heading class="flex items-center justify-between mb-4" level="h3" size="sm">
             <span>{{ __('Upcoming events') }}</span>
         </x-ui.heading>
-        <ul class="list-disc list-inside mt-2">
-            @foreach($upcomingEvents as $event)
-                <li class="mt-2">
-                    <span class="font-semibold">{{ $event->title }}</span> - 
-                    {{ __(':start until :end', ['start' => $event->start_time->format('F j, Y g:i A'), 'end' => $event->end_time->format('F j, Y g:i A')]) }}
-                </li>
-            @endforeach
-        </ul>
+        @if($upcomingEvents->isEmpty())
+            <p class="text-sm text-neutral-500 dark:text-neutral-400">{{ __('No upcoming events.') }}</p>
+        @else
+            <ul class="list-disc list-inside mt-2">
+                @foreach($upcomingEvents as $event)
+                    <li class="mt-2">
+                        <span class="font-semibold">{{ $event->title }}</span> - 
+                        {{ __(':start until :end', ['start' => $event->start_time->format('F j, Y g:i A'), 'end' => $event->end_time->format('F j, Y g:i A')]) }}
+                    </li>
+                @endforeach
+            </ul>
+        @endif
     </x-ui.card>
 </div>

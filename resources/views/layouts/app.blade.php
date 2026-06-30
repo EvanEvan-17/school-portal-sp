@@ -32,6 +32,7 @@
             </x-ui.sidebar>
             <x-ui.layout.main>
                 <x-ui.layout.header>
+                    <x-ui.sidebar.toggle class="md:hidden" />
                     @auth
                         @php
                             $user = Auth::user();
