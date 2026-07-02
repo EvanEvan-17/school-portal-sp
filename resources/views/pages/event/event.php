@@ -7,9 +7,11 @@ use App\Models\StudentClass;
 use Carbon\Carbon;
 use Illuminate\Support\Collection;
 use App\Models\Event;
+// use App\Livewire\Concerns\WithSearch;
 
 new class extends Component
 {
+    // use WithSearch;
     // public StudentClass $class;
     public Collection $selectedEvents;
     public Collection $events;
@@ -32,9 +34,13 @@ new class extends Component
     public function loadEvents()
     {
         $this->events = Event::query()
+            // ->when(filled($this->searchQuery), function ($query) {
+            //     return $query->where('title', 'like', '%' . $this->searchQuery . '%');
+            // })
             ->orderBy('start_time')
             ->get();
     }
+
     public function getSpecialDaysProperty()
     {
         return [
@@ -44,6 +50,7 @@ new class extends Component
                 ->toArray(),
         ];
     }
+
     public function loadEventsForDate(?string $date = null)
     {
         if(!empty($date))

@@ -55,6 +55,11 @@
             </x-ui.modal>
         </x-ui.tab.panel>
         <x-ui.tab.panel name="table-mode">
+            {{-- <x-ui.input 
+                :placeholder="__('Search events...')" 
+                leftIcon="magnifying-glass" 
+                wire:model.live="searchQuery" <!-- this is what's important -->
+            /> --}}
             <x-ui.table>
                 <x-ui.table.header>
                     <x-ui.table.columns>
