@@ -5,6 +5,7 @@
         <!-- Session Status -->
         <x-auth-session-status class="text-center" :status="session('status')" />
         <form wire:submit.prevent="login" class="flex flex-col gap-6">
+            {!! RecaptchaV3::field('login', 'gRecaptchaResponse') !!}
             <!-- Email Address -->
             <x-ui.field>
                 <x-ui.label>{{ __('Email address') }}</x-ui.label>
