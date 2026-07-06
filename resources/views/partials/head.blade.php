@@ -29,4 +29,4 @@
         document.addEventListener('livewire:navigated', function() {
             loadDarkMode();
         });
-    </script>
+</script>

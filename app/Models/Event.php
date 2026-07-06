@@ -13,6 +13,7 @@ class Event extends Model
         'start_time',
         'end_time',
         'visibility',
+        'file_path'
     ];
     protected function casts(): array
     {

@@ -50,6 +50,12 @@
             <x-ui.time-picker wire:model="end_time" />
             <x-ui.error name="end_time" />
         </x-ui.field>
+        {{-- attachment --}}
+        <x-ui.field>
+            <x-ui.label>{{ __('Attachment') }}</x-ui.label>
+            <x-ui.input type="file" wire:model="attachment" />
+            <x-ui.error name="attachment" />
+        </x-ui.field>
         {{-- visibility --}}
         {{-- <x-ui.field>
             <x-ui.label>{{ __('Visibility') }}</x-ui.label>
