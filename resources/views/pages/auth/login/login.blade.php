@@ -4,8 +4,13 @@
 
         <!-- Session Status -->
         <x-auth-session-status class="text-center" :status="session('status')" />
-        <form wire:submit.prevent="login" class="flex flex-col gap-6">
-            {!! RecaptchaV3::field('login', 'gRecaptchaResponse') !!}
+        <form wire:submit="login" wire:recaptcha class="flex flex-col gap-6">
+            @if($errors->has('gRecaptchaResponse'))
+                <x-ui.alerts variant="error" icon="exclamation-circle">
+                    <x-ui.alerts.heading>{{ __('Recaptcha validation failed') }}</x-ui.alerts.heading>
+                    <x-ui.alerts.description>{{ $errors->first('gRecaptchaResponse') }}</x-ui.alerts.description>
+                </x-ui.alerts>
+            @endif
             <!-- Email Address -->
             <x-ui.field>
                 <x-ui.label>{{ __('Email address') }}</x-ui.label>
@@ -45,4 +50,5 @@
             </div>
             
         </form>
+        @livewireRecaptcha
     </div>

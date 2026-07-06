@@ -5,19 +5,22 @@ use Illuminate\Support\Facades\Auth;
 // layout
 use Livewire\Attributes\Layout;
 use Google\Service\Calendar;
-use Lunaweb\RecaptchaV3\Facades\RecaptchaV3;
+use DutchCodingCompany\LivewireRecaptcha\ValidatesRecaptcha;
 
 new #[Layout('layouts::auth')] class extends Component
 {
     public string $email = '';
     public string $password = '';
     public bool $remember = false;
+    public string $gRecaptchaResponse;
 
+    #[ValidatesRecaptcha]
     public function login()
     {
-        $score = RecaptchaV3::verify(request()->input('gRecaptchaResponse'), 'login');
-        if($score > 0.5)
-        {
+        // dd(request()->input('gRecaptchaResponse'));
+        // $score = RecaptchaV3::verify($this->gRecaptchaResponse, 'login');
+        // if($score >= 0.5)
+        // {
             $this->validate([
                 'email' => ['required', 'string', 'email'],
                 'password' => ['required', 'string'],
@@ -36,14 +39,15 @@ new #[Layout('layouts::auth')] class extends Component
             }
 
             $this->addError('email', __('These credentials do not match our records.'));
-        }
-        else
-        {
-            $this->dispatch('notify', 
-                type: 'error',
-                content: __('reCAPTCHA verification failed. Please try again.'),
-                timeout: 4000
-            );
-        }
+        // }
+        // else
+        // {
+        //     // dd($score);
+        //     $this->dispatch('notify', 
+        //         type: 'error',
+        //         content: __('reCAPTCHA verification failed. Please try again.'),
+        //         timeout: 4000
+        //     );
+        // }
     }
 };

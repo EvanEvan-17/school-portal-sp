@@ -84,6 +84,9 @@
         },
         "tabs": {
             "installationTime": 1782629259
+        },
+        "alerts": {
+            "installationTime": 1783327729
         }
     }
 }

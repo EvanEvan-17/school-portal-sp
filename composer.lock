@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "9d98ffe388719d9881e8307049c53e3c",
+    "content-hash": "46321f35b4765adb2db53173aaadd47a",
     "packages": [
         {
             "name": "aws/aws-crt-php",
@@ -591,6 +591,62 @@
                 }
             ],
             "time": "2025-10-31T18:51:33+00:00"
+        },
+        {
+            "name": "dutchcodingcompany/livewire-recaptcha",
+            "version": "v1.1.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/DutchCodingCompany/livewire-recaptcha.git",
+                "reference": "1b67a1804e76b48487b1fcd75c5f339dcf47a46e"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/DutchCodingCompany/livewire-recaptcha/zipball/1b67a1804e76b48487b1fcd75c5f339dcf47a46e",
+                "reference": "1b67a1804e76b48487b1fcd75c5f339dcf47a46e",
+                "shasum": ""
+            },
+            "require": {
+                "livewire/livewire": "^3.0|^4.0",
+                "php": "^8.2"
+            },
+            "require-dev": {
+                "friendsofphp/php-cs-fixer": "^3.8",
+                "larastan/larastan": "^2.9|^3.0",
+                "orchestra/testbench": "^9.0|^10.0",
+                "phpunit/phpunit": "^11.1"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "DutchCodingCompany\\LivewireRecaptcha\\LivewireRecaptchaServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "DutchCodingCompany\\LivewireRecaptcha\\": "src/",
+                    "DutchCodingCompany\\LivewireRecaptcha\\Tests\\": "tests/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "description": "Add Google Recaptcha V3 support to your Laravel Livewire components",
+            "homepage": "https://github.com/dutchcodingcompany/livewire-recaptcha",
+            "keywords": [
+                "Google ReCaptcha",
+                "dutchcodingcompany",
+                "laravel",
+                "livewire"
+            ],
+            "support": {
+                "issues": "https://github.com/DutchCodingCompany/livewire-recaptcha/issues",
+                "source": "https://github.com/DutchCodingCompany/livewire-recaptcha/tree/v1.1.0"
+            },
+            "time": "2026-04-12T20:48:25+00:00"
         },
         {
             "name": "egulias/email-validator",
@@ -1445,72 +1501,6 @@
                 }
             ],
             "time": "2026-05-23T22:00:21+00:00"
-        },
-        {
-            "name": "josiasmontag/laravel-recaptchav3",
-            "version": "1.0.5",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/josiasmontag/laravel-recaptchav3.git",
-                "reference": "97a055fff91cd1eef0e1f0309489ea8269a487d0"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/josiasmontag/laravel-recaptchav3/zipball/97a055fff91cd1eef0e1f0309489ea8269a487d0",
-                "reference": "97a055fff91cd1eef0e1f0309489ea8269a487d0",
-                "shasum": ""
-            },
-            "require": {
-                "guzzlehttp/guzzle": "^6.2|^7.0",
-                "illuminate/container": "~5.7.0|~5.8.0|^6.0|^7.0|^8.0|^9.0|^10.0|^11.0|^12.0|^13.0",
-                "illuminate/http": "~5.7.0|~5.8.0|^6.0|^7.0|^8.0|^9.0|^10.0|^11.0|^12.0|^13.0",
-                "illuminate/support": "~5.7.0|~5.8.0|^6.0|^7.0|^8.0|^9.0|^10.0|^11.0|^12.0|^13.0",
-                "php": ">=7.1.0"
-            },
-            "require-dev": {
-                "mockery/mockery": "^1.2",
-                "orchestra/testbench": "~3.7.0|~3.8.0|^4.0|^5.0|^6.0|^7.0|^8.0|^9.0|^10.0|^11.0",
-                "phpunit/phpunit": "6.2|^7.0|^8.0|^9.5.10|^10.5|^11.5.3|^12.5.12"
-            },
-            "type": "library",
-            "extra": {
-                "laravel": {
-                    "aliases": {
-                        "RecaptchaV3": "Lunaweb\\RecaptchaV3\\Facades\\RecaptchaV3"
-                    },
-                    "providers": [
-                        "Lunaweb\\RecaptchaV3\\Providers\\RecaptchaV3ServiceProvider"
-                    ]
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "Lunaweb\\RecaptchaV3\\": "src"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Josias Montag",
-                    "email": "josias@montag.info"
-                }
-            ],
-            "description": "Recaptcha V3 for Laravel package",
-            "homepage": "https://github.com/josiasmontag/laravel-recaptchav3",
-            "keywords": [
-                "captcha",
-                "laravel",
-                "php",
-                "recaptcha"
-            ],
-            "support": {
-                "issues": "https://github.com/josiasmontag/laravel-recaptchav3/issues",
-                "source": "https://github.com/josiasmontag/laravel-recaptchav3/tree/1.0.5"
-            },
-            "time": "2026-02-24T15:20:53+00:00"
         },
         {
             "name": "laravel/ai",

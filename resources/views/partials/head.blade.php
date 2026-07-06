@@ -30,4 +30,3 @@
             loadDarkMode();
         });
     </script>
-    {!! RecaptchaV3::initJs() !!}
