@@ -95,6 +95,21 @@ new class extends Component
         }
     }
 
+    public function downloadFile(Event $event)
+    {
+        if(!empty($event->file_path))
+        {
+            return response()->download(storage_path('app/public/' . $event->file_path));
+        }
+        else
+        {
+            $this->dispatch('notify', 
+                type: 'error',
+                content: __('No file attached to this event.'),
+                duration: 4000
+            );
+        }
+    }
     public function delete(Event $event)
     {
         $this->authorize('delete-event');

@@ -32,7 +32,7 @@ new class extends Component
 
     public function submit()
     {
-        dd($this->start_date);
+        // dd($this->start_date);
         // dd($this->start_date, $this->start_time, $this->end_date, $this->end_time);
         $this->validate([
             'title' => ['required', 'string', 'max:100'],
@@ -42,7 +42,7 @@ new class extends Component
             'start_time' => ['required', 'date_format:H:i'],
             'end_date' => ['required', 'string', 'date_format:Y-m-d'],
             'end_time' => ['required', 'date_format:H:i'],
-            'attachment' => ['nullable', 'file', 'max:10240'], // max 10MB
+            'attachment' => ['nullable', 'file', 'mimes:jpg,jpeg,png,gif,svg,mp4,avi,mov,wmv,pdf,doc,docx,xls,xlsx,txt', 'max:10240'], // max 10MB
             // 'visibility' => ['required', 'in:default,public,private'],
         ]);
         $user = Auth::user();
@@ -60,8 +60,10 @@ new class extends Component
             'start_time' => $this->start_date . ' ' . $this->start_time,
             'end_time' => $this->end_date . ' ' . $this->end_time,
             'visibility' => $this->visibility,
-            'attachment' => !empty($path) ? $path : null,
+            'file_path' => !empty($path) ? $path : null,
         ]);
+        $this->reset();
+        $this->resetValidation();
         $this->dispatch('notify', 
             type: 'success',
             content: __('Event added successfully!'),

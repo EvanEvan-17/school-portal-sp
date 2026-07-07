@@ -49,6 +49,13 @@
                                 </x-ui.heading>
                                 <p>{{ $selectedEvent->description }}</p>
                                 {{ $selectedEvent->start_time->format('F j, Y g:i A') }} - {{ $selectedEvent->end_time->format('F j, Y g:i A') }}
+                                @if($selectedEvent->file_path)
+                                    <div class="mt-2">
+                                        <x-ui.button href="{{ asset('storage/' . $selectedEvent->file_path) }}" target="_blank" color="green">
+                                            {{ __('View Attachment') }}
+                                        </x-ui.button>
+                                    </div>
+                                @endif
                             </x-ui.card>
                         @endforeach
                 @endif
